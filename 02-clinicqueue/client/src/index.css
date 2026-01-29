@@ -1,0 +1,234 @@
+:root {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(160deg, #0f1c24 0%, #0a1418 50%, #081012 100%);
+  background-attachment: fixed;
+  color: #e0f2f1;
+  min-height: 100vh;
+}
+
+h1 {
+  background: linear-gradient(135deg, #5eead4, #2dd4bf, #14b8a6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+h1::before {
+  content: '⚕ ';
+  -webkit-text-fill-color: #2dd4bf;
+}
+
+h2 {
+  color: #5eead4;
+  font-weight: 600;
+  border-bottom: 2px solid #0f766e;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+}
+
+code {
+  background: rgba(45, 212, 191, 0.12);
+  padding: 3px 8px;
+  border-radius: 6px;
+  color: #99f6e4;
+  font-size: 13px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+.card {
+  background: linear-gradient(145deg, rgba(15, 40, 45, 0.95), rgba(12, 32, 38, 0.98));
+  border: 1px solid #0f766e;
+  border-radius: 20px;
+  padding: 24px;
+  margin: 16px 0;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(94, 234, 212, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+.card:hover {
+  border-color: #2dd4bf;
+  box-shadow: 0 8px 32px rgba(45, 212, 191, 0.12);
+}
+
+.row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+input, select, textarea {
+  border-radius: 12px;
+  border: 1px solid #134e4a;
+  background: rgba(8, 25, 28, 0.9);
+  color: #e0f2f1;
+  padding: 12px 16px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #2dd4bf;
+  box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.2);
+}
+
+button {
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, #14b8a6, #0d9488);
+  color: #fff;
+  padding: 12px 24px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(20, 184, 166, 0.3);
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(20, 184, 166, 0.4);
+  background: linear-gradient(135deg, #2dd4bf, #14b8a6);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+.small {
+  opacity: 0.75;
+  font-size: 13px;
+}
+
+.err {
+  color: #fca5a5;
+  background: rgba(239, 68, 68, 0.1);
+  padding: 8px 12px;
+  border-radius: 8px;
+  border-left: 3px solid #ef4444;
+}
+
+.ok {
+  color: #99f6e4;
+  background: rgba(20, 184, 166, 0.1);
+  padding: 8px 12px;
+  border-radius: 8px;
+  border-left: 3px solid #14b8a6;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+td, th {
+  border-bottom: 1px solid #134e4a;
+  padding: 12px 8px;
+  text-align: left;
+}
+
+th {
+  color: #5eead4;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+
+tr:hover td {
+  background: rgba(45, 212, 191, 0.05);
+}
+
+.subtitle {
+  color: #99f6e4;
+  font-size: 16px;
+  margin-top: -8px;
+  margin-bottom: 24px;
+}
+
+.hint-box {
+  background: rgba(45, 212, 191, 0.08);
+  border: 1px solid #0f766e;
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 16px;
+}
+
+button.secondary {
+  background: transparent;
+  border: 1px solid #2dd4bf;
+  color: #5eead4;
+}
+
+button.secondary:hover {
+  background: rgba(45, 212, 191, 0.1);
+}
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.stat-card {
+  background: linear-gradient(145deg, rgba(15, 40, 45, 0.8), rgba(12, 32, 38, 0.9));
+  border: 1px solid #0f766e;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: #5eead4;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #99f6e4;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.badge {
+  background: rgba(45, 212, 191, 0.2);
+  color: #99f6e4;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  text-transform: capitalize;
+}
+
+.status-badge {
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.small-btn {
+  padding: 6px 12px;
+  font-size: 12px;
+}

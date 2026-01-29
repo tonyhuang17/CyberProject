@@ -1,0 +1,61 @@
+// Data Flow Diagram - IncidentHub (Graphviz DOT)
+// Render with: dot -Tpng dfd.dot -o dfd.png
+// Or: dot -Tsvg dfd.dot -o dfd.svg
+
+digraph DFD {
+    label="Data Flow Diagram - IncidentHub"
+    labelloc="t"
+    fontsize=20
+    rankdir=LR
+    
+    // External Entity
+    user [
+        label="User"
+        shape=ellipse
+        style=filled
+        fillcolor="#f9f"
+    ]
+    
+    // Trust Boundary: Client
+    subgraph cluster_client {
+        label="Trust Boundary: Client"
+        style=dashed
+        bgcolor="#e6f3ff"
+        
+        browser [
+            label="Browser\n(Vite/React)"
+            shape=box
+            style=filled
+            fillcolor="#bbf"
+        ]
+    }
+    
+    // Trust Boundary: Server
+    subgraph cluster_server {
+        label="Trust Boundary: Server"
+        style=dashed
+        bgcolor="#e6ffe6"
+        
+        api [
+            label="API\n(Express)"
+            shape=box
+            style=filled
+            fillcolor="#bfb"
+        ]
+        
+        db [
+            label="MongoDB"
+            shape=cylinder
+            style=filled
+            fillcolor="#fbb"
+        ]
+    }
+    
+    // Data Flows
+    user -> browser [label="HTTP(S) (dev)"]
+    browser -> api [label="REST/JSON + JWT"]
+    api -> db [label="queries"]
+    db -> api [label="results" style=dashed]
+    api -> browser [label="responses" style=dashed]
+    browser -> user [label="rendered UI" style=dashed]
+}

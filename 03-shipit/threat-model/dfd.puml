@@ -1,0 +1,21 @@
+@startuml
+title Data Flow Diagram (template)
+
+actor User as user
+node "Browser (Vite/React)" as fe
+node "API (Express)" as api
+database "MongoDB" as db
+
+user --> fe : HTTP(S) (dev)
+fe --> api : REST/JSON + JWT
+api --> db : queries
+
+note right of fe
+Trust boundary: Client
+end note
+
+note right of api
+Trust boundary: Server
+end note
+
+@enduml

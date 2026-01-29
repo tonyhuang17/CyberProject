@@ -1,0 +1,51 @@
+# Data Flow Diagram - ClinicQueue (D2)
+# D2 is a modern diagram scripting language
+# Render with: d2 dfd.d2 dfd.svg
+
+title: Data Flow Diagram - ClinicQueue {
+  near: top-center
+  shape: text
+  style.font-size: 24
+}
+
+# External Entity
+user: User {
+  shape: person
+  style.fill: "#f9f"
+}
+
+# Trust Boundary: Client
+client: Trust Boundary - Client {
+  style.stroke-dash: 5
+  style.fill: "#e6f3ff"
+  
+  browser: Browser (Vite/React) {
+    shape: rectangle
+    style.fill: "#bbf"
+  }
+}
+
+# Trust Boundary: Server
+server: Trust Boundary - Server {
+  style.stroke-dash: 5
+  style.fill: "#e6ffe6"
+  
+  api: API (Express) {
+    shape: rectangle
+    style.fill: "#bfb"
+  }
+  
+  db: MongoDB {
+    shape: cylinder
+    style.fill: "#fbb"
+  }
+  
+  api -> db: queries
+  db -> api: results
+}
+
+# Data Flows
+user -> client.browser: "HTTP(S) (dev)"
+client.browser -> server.api: "REST/JSON + JWT"
+server.api -> client.browser: responses
+client.browser -> user: rendered UI
