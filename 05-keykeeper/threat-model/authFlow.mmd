@@ -1,0 +1,35 @@
+graph TB
+    A[User Input<br/>email + password]
+    B[React Frontend]
+    C[POST /auth/login<br/>email, password]
+    D[Auth Route Handler]
+    E[MongoDB Query<br/>Find user by email]
+    F[(User Collection<br/>passwordHash)]
+    G[bcrypt.compare<br/>password, hash]
+    H[signToken<br/>sub: userId, role]
+    I[JWT Token<br/>Generated]
+    J[Response<br/>token]
+    K[LocalStorage<br/>Store JWT]
+    
+    A -->|User submits| B
+    B -->|HTTP POST| C
+    C --> D
+    D -->|Query| E
+    E --> F
+    F -->|User record| D
+    D --> G
+    G -->|Valid| H
+    H --> I
+    I --> J
+    J -->|Store token| K
+    K -->|Token cached| B
+    
+    style A fill:#e3f2fd
+    style K fill:#ff6b6b,stroke:#c92a2a,stroke-width:3px
+    style I fill:#ffd43b
+    style F fill:#d0bfff
+    
+    L[❌ VULNERABILITIES]
+    L -.->|No HTTPS| C
+    L -.->|XSS vulnerable| K
+    L -.->|No expiration| I

@@ -1,0 +1,26 @@
+graph LR
+    subgraph "Authentication Controls"
+        A1[Password Hashing<br/>bcryptjs salt=10]
+        A2[JWT Tokens<br/>Bearer Auth]
+        A3[Email Validation<br/>Zod schema]
+    end
+    
+    subgraph "Missing/Weak Controls"
+        B1[❌ No HTTPS/TLS]
+        B2[❌ JWT in localStorage]
+        B3[❌ Plaintext Secrets]
+        B4[❌ No Rate Limiting]
+        B5[❌ No MFA]
+        B6[❌ No Encryption at Rest]
+        B7[❌ Weak RBAC]
+        B8[❌ No Session Management]
+    end
+    
+    style B1 fill:#ff6b6b
+    style B2 fill:#ff6b6b
+    style B3 fill:#ff6b6b
+    style B4 fill:#ffd43b
+    style B5 fill:#ffd43b
+    style B6 fill:#ff6b6b
+    style B7 fill:#ffd43b
+    style B8 fill:#ffd43b

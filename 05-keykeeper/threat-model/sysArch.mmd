@@ -1,0 +1,40 @@
+graph TB
+    subgraph "Client Layer - Browser"
+        A[User Browser]
+        B[React Frontend]
+        C[LocalStorage<br/>JWT Token Storage]
+    end
+    
+    subgraph "Network Layer"
+        D[HTTP/HTTPS<br/>localhost:5055]
+    end
+    
+    subgraph "Application Layer - Express API"
+        E[Auth Routes<br/>/auth/*]
+        F[API Routes<br/>/api/items*]
+        G[JWT Middleware<br/>requireAuth]
+        H[Password Hashing<br/>bcryptjs]
+    end
+    
+    subgraph "Data Layer"
+        I[(MongoDB Database)]
+        J[User Collection<br/>email, passwordHash, role]
+        K[Secrets Collection<br/>secretValue in PLAINTEXT]
+    end
+    
+    A -->|User Actions| B
+    B -->|Store JWT| C
+    B -->|API Requests + Bearer Token| D
+    D --> E
+    D --> F
+    E -->|Validate Credentials| H
+    E -->|Create/Verify JWT| G
+    F -->|Verify JWT| G
+    E -->|Read/Write Users| J
+    F -->|Read/Write Secrets| K
+    J -.->|Stored in| I
+    K -.->|Stored in| I
+    
+    style C fill:#ff6b6b,stroke:#c92a2a,stroke-width:3px
+    style K fill:#ff6b6b,stroke:#c92a2a,stroke-width:3px
+    style D fill:#ffd43b,stroke:#fab005,stroke-width:2px
